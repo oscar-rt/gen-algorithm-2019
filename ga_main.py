@@ -64,6 +64,7 @@ generations = 0
 reached_target = False
 deaths = settings["DEATH_RATE"] * settings["MAX_POPULATION"] if settings["DEATH_RATE"] * settings["MAX_POPULATION"] <= settings["MAX_POPULATION"] - 1 else settings["MAX_POPULATION"] - 1
 child_spots = settings["MAX_POPULATION"] -  deaths
+rep_dict = {}
 #################################################
 #inital setup                                   #
 #################################################
