@@ -2,6 +2,16 @@ from ga_setup import settings
 import random
 import operator
 
+###
+##NOTES
+### 
+### Currently using hard-coded distribution function for reproduction spots, could be made into a setting
+### Need to implement mutations 
+### Should implement graphical representation of some kind 
+###
+###!CURRENT: Trying to figure out how to distribute child spots among cell hierarchy 
+
+
 #get random integer
 def g_ri():
     return random.randint(0, settings["MAX_NUMBER"])
@@ -72,6 +82,15 @@ rep_dict = {}
 for ci in range(settings["MAX_POPULATION"]):
     cell_pool.append(Cell())
 
+def update_rd():
+    #get number of cells in cell pool
+    cnum = len(cell_pool)
+    #for current cell iterator and current cell !CURRENT
+    for num, cell in enumerate(cell_pool):
+        pass
+
+
+
 #main loop
 while generations <= settings["MAX_GENERATIONS"] or not reached_target:
     #sort the cell pool so that the tippy top is the fittest
@@ -80,7 +99,19 @@ while generations <= settings["MAX_GENERATIONS"] or not reached_target:
     #go through the survival step
     del cell_pool[-deaths:]
 
+    #update the reproduction dictionary
+    rep_dict.clear()
+    update_rd()
+
     #repopulate up until the max cell count, figure out how to divide the child spots among the sorted cell pool
+    
 
+    #check if any cell has reached the target fitness, if so, stop evolution
+    for cell in cell_pool:
+        if cell.emargin == 0:
+            reached_target == True
 
+    #go into the next generation
     generations = generations + 1
+
+print(cell_pool)
